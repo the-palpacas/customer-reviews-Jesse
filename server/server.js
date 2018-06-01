@@ -11,5 +11,16 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
+app.use("/1", (req, res) => {
+  connection.query("SELECT shop_id FROM products WHERE id = 1", (err, results) => {
+    let shop = results[0].shop_id;
+    connection.query(`SELECT * FROM reviews WHERE shop_id = ${shop}`, (err, results) => {
+      err
+      ? res.status(500)
+      : res.json(results);
+    });
+  });
+});
+
 app.listen(3001);
 console.log("Express server listening on port 3001");
