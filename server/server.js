@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const mysql = require("mysql");
 
 const app = express();
@@ -11,8 +12,9 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-app.use("/1", (req, res) => {
-  connection.query("SELECT shop_id FROM products WHERE id = 1", (err, results) => {
+app.use((req, res) => {
+  let url = req.url.split(path.sep);
+  connection.query(`SELECT shop_id FROM products WHERE id = ${parseInt(url[1])}`, (err, results) => {
     let shop = results[0].shop_id;
     connection.query(`SELECT * FROM reviews WHERE shop_id = ${shop}`, (err, results) => {
       err
