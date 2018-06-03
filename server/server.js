@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const mysql = require("mysql");
 
 const app = express();
@@ -12,17 +11,16 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-app.use((req, res) => {
-  let url = req.url.split(path.sep);
-  connection.query(`SELECT shop_id FROM products WHERE id = ${parseInt(url[1])}`, (err, results) => {
-    let shop = results[0].shop_id;
-    connection.query(`SELECT * FROM reviews WHERE shop_id = ${shop}`, (err, results) => {
-      err
-      ? res.status(500)
-      : res.json(results);
-    });
+app.get("/:id/reviews", (req, res) => {
+  const productId = req.params.id;
+  connection.query(`SELECT reviews.id, users.username, users.img_url, products.product, products.img_url, reviews.date_submitted, reviews.rating, reviews.review, reviews.votes, reviews.helpfulness 
+  FROM reviews INNER JOIN products INNER JOIN users 
+  ON reviews.user_id = users.id AND reviews.product_id = products.id 
+  AND reviews.shop_id = (SELECT shop_id FROM products WHERE id = ${productId})`, (err, results) => {
+    err
+    ? res.status(500).end()
+    : res.status(200).json(results);
   });
 });
 
-app.listen(3001);
-console.log("Express server listening on port 3001");
+app.listen(3001, () => console.log("Express server listening on port 3001"));
