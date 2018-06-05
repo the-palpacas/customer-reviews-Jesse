@@ -234,7 +234,7 @@ insert into products (id, product, img_url, shop_id) values (99, 'Konklux', 'htt
 insert into products (id, product, img_url, shop_id) values (100, 'Bytecard', 'https://s3-us-west-1.amazonaws.com/front-end-capstone-images/product100.jpg', 10);
 
 create table reviews (
-	id INT AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
 	user_id INT,
 	product_id INT,
 	date_submitted VARCHAR(15),
