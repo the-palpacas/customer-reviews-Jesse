@@ -13,6 +13,8 @@ connection.connect();
 
 app.use(express.json());
 
+app.use("/:id", express.static(__dirname + "/../public"));
+
 app.get("/:id/reviews", (req, res) => {
   let productId = req.params.id;
   connection.query(`SELECT reviews.id, users.username, users.img_url, products.product, products.img_url, products.shop_id, reviews.date_submitted, reviews.rating, reviews.review, reviews.votes, reviews.helpfulness 
