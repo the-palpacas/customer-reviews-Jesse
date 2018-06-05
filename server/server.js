@@ -43,4 +43,13 @@ app.post("/:id/reviews", (req, res) => {
   });
 });
 
+app.put("/:id/reviews", (req, res) => {
+  connection.query(`UPDATE reviews SET votes = ${req.body.votes}, helpfulness = ${req.body.helpfulness}
+  WHERE id = ${req.body.id}`, (err, results) => {
+    err
+    ? res.status(500).json(err)
+    : res.status(204).end();
+  });
+});
+
 app.listen(3001, () => console.log("Express server listening on port 3001"));
