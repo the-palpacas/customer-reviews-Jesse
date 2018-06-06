@@ -1,11 +1,14 @@
+DROP DATABASE IF EXISTS shop_reviews;
+
 CREATE DATABASE shop_reviews;
 
 USE shop_reviews;
 
 create table users (
-	id INT,
+	id INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(50),
-	img_url VARCHAR(100)
+	img_url VARCHAR(100),
+	PRIMARY KEY (id)
 );
 insert into users (id, username, img_url) values (1, 'gferriere0', 'https://s3-us-west-1.amazonaws.com/front-end-capstone-images/user1.jpg');
 insert into users (id, username, img_url) values (2, 'fguillotin1', 'https://s3-us-west-1.amazonaws.com/front-end-capstone-images/user2.jpg');
@@ -231,7 +234,7 @@ insert into products (id, product, img_url, shop_id) values (99, 'Konklux', 'htt
 insert into products (id, product, img_url, shop_id) values (100, 'Bytecard', 'https://s3-us-west-1.amazonaws.com/front-end-capstone-images/product100.jpg', 10);
 
 create table reviews (
-	id INT,
+	id INT NOT NULL AUTO_INCREMENT,
 	user_id INT,
 	product_id INT,
 	date_submitted VARCHAR(15),
@@ -239,7 +242,8 @@ create table reviews (
 	review TEXT,
 	votes INT,
 	helpfulness INT,
-	shop_id INT
+	shop_id INT,
+	PRIMARY KEY (id)
 );
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (1, 3, 86, '03/09/2018', 1, 'donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non', 110, 36, 10);
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (2, 47, 68, '08/22/2017', 1, 'bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede', 92, 55, 4);
@@ -440,7 +444,7 @@ insert into reviews (id, user_id, product_id, date_submitted, rating, review, vo
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (197, 30, 67, '03/28/2018', 2, 'rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat', 63, 7, 5);
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (198, 21, 48, '03/08/2018', 2, 'morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis', 88, 5, 1);
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (199, 25, 36, '03/26/2018', 3, 'viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam', 80, 62, 3);
-insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (200, 10, 22, '09/16/2017', 2, 'pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id', 39, -12, 5);insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (101, 71, 50, '06/24/2017', 2, 'id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue', 18, 5, 7);
+insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (200, 10, 22, '09/16/2017', 2, 'pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id', 39, -12, 5);
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (201, 76, 61, '07/09/2017', 4, 'turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in', 103, 7, 9);
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (202, 29, 89, '07/16/2017', 4, 'massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet', 88, 17, 3);
 insert into reviews (id, user_id, product_id, date_submitted, rating, review, votes, helpfulness, shop_id) values (203, 25, 18, '05/11/2018', 2, 'elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non', 21, 15, 5);
