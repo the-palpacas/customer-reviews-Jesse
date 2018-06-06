@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import ReviewEntry from "./components/ReviewEntry.jsx";
+import SubmitReview from "./components/SubmitReview.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +23,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>Hello World</div>
+      <div>
+        {this.state.reviews.map(review => {
+          return (
+            <ReviewEntry />
+          )
+        })}
+        <SubmitReview />
+      </div>
     )
   }
 }
