@@ -1,6 +1,6 @@
 import React from "react";
 
-const Review = (props) => {
+const ReviewEntry = (props) => {
   return (
     <div>
       Review Container
