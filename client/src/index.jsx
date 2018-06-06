@@ -15,6 +15,10 @@ class ShopReviews extends React.Component {
   }
 
   componentDidMount() {
+    this.getReviews();
+  }
+  
+  getReviews() {
     axios.get(`${window.location.pathname}reviews`)
       .then(response => {
         let avgRating = response.data.reduce((acc, val) => {
@@ -36,7 +40,9 @@ class ShopReviews extends React.Component {
             )
           }
         })}
-        <SubmitReview />
+        <SubmitReview 
+          getReviews={this.getReviews.bind(this)} 
+        />
       </div>
     )
   }
