@@ -16,7 +16,10 @@ class ShopReviews extends React.Component {
   componentDidMount() {
     axios.get(`${window.location.pathname}reviews`)
       .then(response => {
-        this.setState({reviews: response});
+        let avgRating = response.reduce((acc, val) => {
+          return acc + val.rating;
+        }, 0) / response.length;
+        this.setState({reviews: response, avgRating: avgRating});
       })
       .catch(err => console.log(err));
   }
