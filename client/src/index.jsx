@@ -9,7 +9,8 @@ class ShopReviews extends React.Component {
     super(props);
 
     this.state = {
-      reviews: []
+      reviews: [],
+      avgRating: null
     }
   }
 
