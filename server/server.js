@@ -17,7 +17,7 @@ app.use("/:id", express.static(__dirname + "/../public"));
 
 app.get("/:id/reviews", (req, res) => {
   let productId = req.params.id;
-  connection.query(`SELECT reviews.id, users.username, users.img_url, products.product, products.img_url, products.shop_id, reviews.date_submitted, reviews.rating, reviews.review, reviews.votes, reviews.helpfulness 
+  connection.query(`SELECT reviews.id, users.username, users.img_url AS user_img, products.product, products.img_url AS product_img, reviews.shop_id, reviews.date_submitted, reviews.rating, reviews.review, reviews.votes, reviews.helpfulness 
   FROM reviews INNER JOIN products INNER JOIN users 
   ON reviews.user_id = users.id AND reviews.product_id = products.id 
   AND reviews.shop_id = (SELECT shop_id FROM products WHERE id = ${productId})`, (err, results) => {
