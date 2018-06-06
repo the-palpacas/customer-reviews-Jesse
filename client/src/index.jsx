@@ -4,7 +4,7 @@ import axios from "axios";
 import ReviewEntry from "./components/ReviewEntry.jsx";
 import SubmitReview from "./components/SubmitReview.jsx";
 
-class App extends React.Component {
+class ShopReviews extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,3 +34,5 @@ class App extends React.Component {
     )
   }
 }
+
+ReactDOM.render(<ShopReviews />, document.getElementById("shop-reviews"));
