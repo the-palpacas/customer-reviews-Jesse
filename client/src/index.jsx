@@ -28,10 +28,12 @@ class ShopReviews extends React.Component {
     return (
       <div>
         <h2>Reviews (Avg star rating goes here)</h2>
-        {this.state.reviews.map(review => {
-          return (
-            <ReviewEntry />
-          )
+        {this.state.reviews.map((review, i) => {
+          if (i < 5) {
+            return (
+              <ReviewEntry data={review} key={review.id}/>
+            )
+          }
         })}
         <SubmitReview />
       </div>
