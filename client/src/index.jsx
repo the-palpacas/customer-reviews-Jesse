@@ -24,6 +24,7 @@ class ShopReviews extends React.Component {
   render() {
     return (
       <div>
+        <h2>Reviews (Avg star rating goes here)</h2>
         {this.state.reviews.map(review => {
           return (
             <ReviewEntry />
