@@ -5,6 +5,15 @@ class SubmitReview extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  createDate() {
+    let d = new Date();
+    let month = d.getMonth() + 1;
+    let day = d.getDate();
+    let year = d.getFullYear();
+
+    return `${month}/${day}/${year}`;
+  }
   
   render() {
     return (
