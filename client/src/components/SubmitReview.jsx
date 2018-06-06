@@ -9,7 +9,8 @@ class SubmitReview extends React.Component {
   render() {
     return (
       <form>
-        Username: <input type="text" name="username"></input><br/>
+        Name: <input type="text" name="name"></input><br/>
+        Review:<br/>
         <textarea rows="5" cols="70"></textarea>
         <button>Submit Review!</button>
       </form>
