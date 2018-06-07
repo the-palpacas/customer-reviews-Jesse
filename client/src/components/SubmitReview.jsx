@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import StarRating from "react-star-rating-component";
 
 class SubmitReview extends React.Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class SubmitReview extends React.Component {
 
     this.state = {
       inputName: "",
-      inputReview: ""
+      inputReview: "",
+      rating: 1
     }
   }
 
@@ -18,6 +20,10 @@ class SubmitReview extends React.Component {
     let year = d.getFullYear();
 
     return `${month}/${day}/${year}`;
+  }
+
+  onStarClick(nextValue) {
+    this.setState({rating: nextValue});
   }
 
   postReview(name, review, rating) {
@@ -43,7 +49,13 @@ class SubmitReview extends React.Component {
                 type="text" 
                 name="name" 
                 onChange={e => this.setState({inputName: e.target.value})}
-              ></input><br/>
+              ></input>
+        Rating: <StarRating 
+          name="rating"
+          starCount={5}
+          value={this.state.rating}
+          onStarClick={this.onStarClick.bind(this)}
+        /><br/>
         Review:<br/>
         <textarea 
           rows="5" 
