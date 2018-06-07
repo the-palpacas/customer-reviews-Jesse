@@ -10,17 +10,28 @@ class ShopReviews extends React.Component {
 
     this.state = {
       reviews: [],
-      avgRating: null
+      avgRating: null,
+      shopId: null
     }
   }
 
   componentDidMount() {
+    this.getReviews();
+  }
+  
+  getReviews() {
     axios.get(`${window.location.pathname}reviews`)
       .then(response => {
         let avgRating = response.data.reduce((acc, val) => {
           return acc + val.rating;
         }, 0) / response.data.length;
-        this.setState({reviews: response.data, avgRating: Math.round(avgRating)});
+        let shopId = response.data[0].shop_id;
+
+        this.setState({
+          reviews: response.data, 
+          avgRating: Math.round(avgRating), 
+          shopId: shopId
+        });
       })
       .catch(err => console.log(err));
   }
@@ -36,7 +47,10 @@ class ShopReviews extends React.Component {
             )
           }
         })}
-        <SubmitReview />
+        <SubmitReview 
+          getReviews={this.getReviews.bind(this)} 
+          shopId={this.state.shopId}
+        />
       </div>
     )
   }
