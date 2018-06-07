@@ -5,7 +5,7 @@ const ReviewBody = (props) => {
     <div>
       <div><span>{props.rating} stars</span> <span>{props.date}</span></div>
       <div>{props.review}</div>
-      <div><img src={props.img}/>{props.productName}</div>
+      <a href={`/${props.productId}/`}><img src={props.img}/>{props.productName}</a>
     </div>
   )
 }
