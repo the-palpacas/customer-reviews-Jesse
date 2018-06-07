@@ -5,7 +5,7 @@ const ReviewBody = (props) => {
     <div>
       <div><span>{props.rating} stars</span> <span>{props.date}</span></div>
       <div>{props.review}</div>
-      <a href={`http://localhost:3001/${props.productId}/`}><img src={props.img}/>{props.productName}</a>
+      <a href={`/${props.productId}/`}><img src={props.img}/>{props.productName}</a>
     </div>
   )
 }
