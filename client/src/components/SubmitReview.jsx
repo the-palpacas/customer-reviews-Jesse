@@ -50,19 +50,19 @@ class SubmitReview extends React.Component {
                 type="text" 
                 name="name" 
                 onChange={e => this.setState({inputName: e.target.value})}
-              ></input>
+              />
         Rating: <StarRating 
           name="rating"
           starCount={5}
           value={this.state.rating}
           onStarClick={this.onStarClick.bind(this)}
         /><br/>
-        Review:<br/>
         <textarea 
           rows="5" 
           cols="70"
+          placeholder="Your review here..."
           onChange={e => this.setState({inputReview: e.target.value})}
-        ></textarea>
+        />
         <button onClick={e => {
           e.preventDefault();
           this.postReview(this.state.inputName, this.state.inputReview, this.state.rating);
