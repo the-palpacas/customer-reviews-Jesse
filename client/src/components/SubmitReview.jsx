@@ -19,6 +19,22 @@ class SubmitReview extends React.Component {
 
     return `${month}/${day}/${year}`;
   }
+
+  postReview(name, review, rating) {
+    let date = this.createDate();
+
+    axios.post(`${window.location.pathname}reviews`, {
+      username: name,
+      dateSubmitted: date,
+      rating: rating,
+      review: review,
+      shopId: this.props.shopId
+    })
+    .then(() => {
+      this.props.getReviews();
+    })
+    .catch(err => console.log(err));
+  }
   
   render() {
     return (
