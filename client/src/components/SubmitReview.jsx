@@ -37,6 +37,7 @@ class SubmitReview extends React.Component {
       shopId: this.props.shopId
     })
     .then(() => {
+      console.log("success")
       this.props.getReviews();
     })
     .catch(err => console.log(err));
@@ -62,7 +63,11 @@ class SubmitReview extends React.Component {
           cols="70"
           onChange={e => this.setState({inputReview: e.target.value})}
         ></textarea>
-        <button>Submit Review!</button>
+        <button onClick={e => {
+          e.preventDefault();
+          this.postReview(this.state.inputName, this.state.inputReview, this.state.rating);
+        }}
+        >Submit Review!</button>
       </form>
     )
   }
