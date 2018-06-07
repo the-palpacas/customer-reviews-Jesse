@@ -7,14 +7,15 @@ const ReviewEntry = (props) => {
     <div>
       <ReviewUser 
         username={props.data.username} 
-        img={"https://s3-us-west-1.amazonaws.com/front-end-capstone-images/default.png"} 
+        img={props.data.user_img} 
       />
       <ReviewBody 
         rating={props.data.rating}
         date={props.data.date_submitted}
         review={props.data.review}
-        img={props.data.img_url}
+        img={props.data.product_img}
         productName={props.data.product}
+        productId={props.data.product_img.slice(68, props.data.product_img.indexOf(".jpg"))}
       />
     </div>
   )
