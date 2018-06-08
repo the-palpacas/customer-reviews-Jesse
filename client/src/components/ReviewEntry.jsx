@@ -18,7 +18,10 @@ const ReviewEntry = (props) => {
         productName={props.data.product}
         productId={props.data.product_img.slice(68, props.data.product_img.indexOf(".jpg"))}
       />
-      <Helpfulness />
+      <Helpfulness 
+        votes={props.data.votes}
+        helpfulness={props.data.helpfulness}
+      />
     </div>
   )
 }
