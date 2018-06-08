@@ -3,8 +3,9 @@ import React from "react";
 const Helpfulness = (props) => {
   return (
     <div>
-      <div>(Helpfulness prop) out of (Votes prop) people found this review helpful.</div>
-      <button>Helpful</button><button>Not Helpful</button>
+      <div><i className="fas fa-arrow-up" /></div>
+      <div>{props.helpfulness}</div>
+      <div><i className="fas fa-arrow-down" /></div>
     </div>
   )
 }
