@@ -12,15 +12,36 @@ class Helpfulness extends React.Component {
     }
   }
 
-  handleVote(id, votes, helpfulness) {
+  handleVote(id, votes, helpfulness, selected) {
     axios.put(`${window.location.pathname}reviews`, {
       id: id,
       votes: votes,
       helpfulness: helpfulness
     })
+    .then(() => this.setState({
+      selected: selected,
+      votes: votes,
+      helpfulness: helpfulness
+    }))
+    .catch(err => console.log(err));
   }
 
   render() {
+    let selected = this.state.selected;
+    let handleUpvoteClick;
+    let handleDownvoteClick;
+
+    if (selected === "upvote") {
+      handleUpvoteClick = () => this.handleVote(this.props.reviewId, this.state.votes - 1, this.state.helpfulness - 1, null)
+      handleDownvoteClick = () => this.handleVote(this.props.reviewId, this.state.votes, this.state.helpfulness - 2, "downvote")
+    } else if (selected === "downvote") {
+      handleUpvoteClick = () => this.handleVote(this.props.reviewId, this.state.votes, this.state.helpfulness + 2, "upvote")
+      handleDownvoteClick = () => this.handleVote(this.props.reviewId, this.state.votes - 1, this.state.helpfulness + 1, null)
+    } else {
+      handleUpvoteClick = () => this.handleVote(this.props.reviewId, this.state.votes + 1, this.state.helpfulness + 1, "upvote")
+      handleDownvoteClick = () => this.handleVote(this.props.reviewId, this.state.votes + 1, this.state.helpfulness - 1, "downvote")
+    }
+
     return (
       <div>
         <div>
@@ -31,11 +52,7 @@ class Helpfulness extends React.Component {
               ? {color: "orange"} 
               : {color: "black"}
             }
-            onClick={
-              this.state.selected === "upvote" 
-              ? () => this.setState({selected: null}) 
-              : () => this.setState({selected: "upvote"})
-            }
+            onClick={handleUpvoteClick}
           />
         </div>
         <div>{this.state.helpfulness}</div>
@@ -47,11 +64,7 @@ class Helpfulness extends React.Component {
               ? {color: "orange"} 
               : {color: "black"}
             }
-            onClick={
-              this.state.selected === "downvote" 
-              ? () => this.setState({selected: null}) 
-              : () => this.setState({selected: "downvote"})
-            }
+            onClick={handleDownvoteClick}
           />
         </div>
       </div>
