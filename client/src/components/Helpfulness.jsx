@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class Helpfulness extends React.Component {
   constructor(props) {
@@ -7,6 +8,10 @@ class Helpfulness extends React.Component {
     this.state = {
       selected: null
     }
+  }
+
+  handleVote(id, votes, helpfulness) {
+
   }
 
   render() {
