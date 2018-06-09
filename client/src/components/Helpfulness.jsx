@@ -13,7 +13,7 @@ class Helpfulness extends React.Component {
     return (
       <div>
         <div><i className="fas fa-arrow-up" /></div>
-        <div>{props.helpfulness}</div>
+        <div>{this.props.helpfulness}</div>
         <div><i className="fas fa-arrow-down" /></div>
       </div>
     )
