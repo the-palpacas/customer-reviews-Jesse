@@ -18,12 +18,12 @@ class Helpfulness extends React.Component {
       votes: votes,
       helpfulness: helpfulness
     })
-    .then(() => this.setState({
-      selected: selected,
-      votes: votes,
-      helpfulness: helpfulness
-    }))
-    .catch(err => console.log(err));
+      .then(() => this.setState({
+        selected: selected,
+        votes: votes,
+        helpfulness: helpfulness
+      }))
+      .catch(err => console.log(err));
   }
 
   render() {

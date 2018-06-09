@@ -38,11 +38,11 @@ class SubmitReview extends React.Component {
       review: review,
       shopId: this.props.shopId
     })
-    .then(() => {
-      console.log("success")
-      this.props.getReviews();
-    })
-    .catch(err => console.log(err));
+      .then(() => {
+        console.log("success")
+        this.props.getReviews();
+      })
+      .catch(err => console.log(err));
   }
   
   render() {
