@@ -6,7 +6,9 @@ class Helpfulness extends React.Component {
     super(props);
 
     this.state = {
-      selected: null
+      selected: null,
+      votes: this.props.votes,
+      helpfulness: this.props.helpfulness
     }
   }
 
@@ -36,7 +38,7 @@ class Helpfulness extends React.Component {
             }
           />
         </div>
-        <div>{this.props.helpfulness}</div>
+        <div>{this.state.helpfulness}</div>
         <div>
           <i 
             className="fas fa-arrow-down"
