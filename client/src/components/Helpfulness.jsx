@@ -11,7 +11,11 @@ class Helpfulness extends React.Component {
   }
 
   handleVote(id, votes, helpfulness) {
-
+    axios.put(`${window.location.pathname}reviews`, {
+      id: id,
+      votes: votes,
+      helpfulness: helpfulness
+    })
   }
 
   render() {
