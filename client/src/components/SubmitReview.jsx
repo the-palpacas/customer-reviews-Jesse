@@ -39,7 +39,6 @@ class SubmitReview extends React.Component {
       shopId: this.props.shopId
     })
       .then(() => {
-        console.log("success")
         this.props.getReviews();
       })
       .catch(err => console.log(err));
