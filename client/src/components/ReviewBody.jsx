@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from "react-star-rating-component";
 
 const ReviewBody = (props) => {
   let months = {
@@ -21,7 +22,7 @@ const ReviewBody = (props) => {
 
   return (
     <div>
-      <div><span>{props.rating} stars</span> <span>{formatted}</span></div>
+      <div><StarRating name="rating" value={props.rating} editing={false} /> <span>{formatted}</span></div>
       <div>{props.review}</div>
       <a href={`/${props.productId}/`}><img src={props.img}/>{props.productName}</a>
     </div>
