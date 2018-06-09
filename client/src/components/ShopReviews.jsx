@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import StarRating from "react-star-rating-component";
 import ReviewEntry from "./ReviewEntry.jsx";
 import SubmitReview from "./SubmitReview.jsx";
 
@@ -38,7 +39,15 @@ class ShopReviews extends React.Component {
   render() {
     return (
       <div>
-        <h2>Reviews (Avg star rating goes here)</h2>
+        <h2>
+          Reviews 
+          <StarRating 
+            name="avgRating" 
+            value={this.state.avgRating} 
+            editing={false} 
+          /> 
+          ({this.state.reviews.length})
+        </h2>
         {this.state.reviews.map((review, i) => {
           if (i < 5) {
             return (
