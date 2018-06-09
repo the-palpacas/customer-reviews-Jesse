@@ -19,6 +19,8 @@ class SubmitReview extends React.Component {
     let day = d.getDate();
     let year = d.getFullYear();
 
+    month < 10 ? month = "0" + month : null;
+
     return `${month}/${day}/${year}`;
   }
 
