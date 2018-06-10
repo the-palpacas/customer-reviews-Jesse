@@ -1,5 +1,6 @@
 import React from "react";
 import StarRating from "react-star-rating-component";
+import styled from "styled-components";
 
 const ReviewBody = (props) => {
   let months = {
@@ -20,11 +21,16 @@ const ReviewBody = (props) => {
   let [month, day, year] = props.date.split("/");
   let formatted = `${months[month]} ${day}, ${year}`;  
 
+  const SmallImg = styled.img`
+    height: 75px;
+    width: 75px;
+  `;
+
   return (
     <div>
       <div><StarRating name="rating" value={props.rating} editing={false} /> <span>{formatted}</span></div>
       <div>{props.review}</div>
-      <a href={`/${props.productId}/`}><img src={props.img}/>{props.productName}</a>
+      <a href={`/${props.productId}/`}><SmallImg src={props.img}/>{props.productName}</a>
     </div>
   )
 }
