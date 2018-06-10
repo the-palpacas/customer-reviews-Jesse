@@ -26,12 +26,16 @@ const ReviewBody = (props) => {
     width: 75px;
   `;
 
+  const Wrapper = styled.div`
+    float: right;
+  `;
+  
   return (
-    <div>
+    <Wrapper>
       <div><StarRating name="rating" value={props.rating} editing={false} /> <span>{formatted}</span></div>
       <div>{props.review}</div>
       <a href={`/${props.productId}/`}><SmallImg src={props.img}/>{props.productName}</a>
-    </div>
+    </Wrapper>
   )
 }
 
