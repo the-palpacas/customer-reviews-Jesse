@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 class Helpfulness extends React.Component {
   constructor(props) {
@@ -42,8 +43,14 @@ class Helpfulness extends React.Component {
       handleDownvoteClick = () => this.handleVote(this.props.reviewId, this.state.votes + 1, this.state.helpfulness - 1, "downvote")
     }
 
+    const Wrapper = styled.div`
+      float: left;
+      height: 50px;
+      width: 20px;
+    `;
+
     return (
-      <div>
+      <Wrapper>
         <div>
           <i 
             className="fas fa-arrow-up" 
@@ -67,7 +74,7 @@ class Helpfulness extends React.Component {
             onClick={handleDownvoteClick}
           />
         </div>
-      </div>
+      </Wrapper>
     )
   }
 }
