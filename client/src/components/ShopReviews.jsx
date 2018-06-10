@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
 import StarRating from "react-star-rating-component";
 import ReviewEntry from "./ReviewEntry.jsx";
 import SubmitReview from "./SubmitReview.jsx";
@@ -37,9 +38,13 @@ class ShopReviews extends React.Component {
   }
 
   render() {
+    const Wrapper = styled.section`
+      font-family: 'Helvetica', 'Arial', sans-serif;
+    `;
+
     return (
-      <div>
-        <h2>
+      <Wrapper>
+        <h3>
           Reviews 
           <StarRating 
             name="avgRating" 
@@ -47,7 +52,7 @@ class ShopReviews extends React.Component {
             editing={false} 
           /> 
           ({this.state.reviews.length})
-        </h2>
+        </h3>
         {this.state.reviews.map((review, i) => {
           if (i < 5) {
             return (
@@ -59,7 +64,7 @@ class ShopReviews extends React.Component {
           getReviews={this.getReviews.bind(this)} 
           shopId={this.state.shopId}
         />
-      </div>
+      </Wrapper>
     )
   }
 }
