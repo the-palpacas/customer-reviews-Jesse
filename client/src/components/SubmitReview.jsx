@@ -1,6 +1,44 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
 import StarRating from "react-star-rating-component";
+
+const Form = styled.form`
+  margin: 5px 0px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Rating = styled(StarRating)`
+  vertical-align: middle;
+  margin: 5px 0px;
+  font-size: 16px;
+`;
+
+const InputName = styled.input`
+  margin: 5px 0px;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 14px;
+`;
+
+const TextAreaReview = styled.textarea`
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 14px;
+  height: 100px;
+  width: 400px;
+`;
+
+const Button = styled.button`
+  width: 100px;
+  background: #F56400;
+  color: white;
+  border-radius: 3px;
+  margin-top: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 class SubmitReview extends React.Component {
   constructor(props) {
@@ -46,30 +84,39 @@ class SubmitReview extends React.Component {
   
   render() {
     return (
-      <form>
-        Name: <input 
-                type="text" 
-                name="name" 
-                onChange={e => this.setState({inputName: e.target.value})}
-              />
-        Rating: <StarRating 
-          name="rating"
-          starCount={5}
-          value={this.state.rating}
-          onStarClick={this.onStarClick.bind(this)}
-        /><br/>
-        <textarea 
-          rows="5" 
-          cols="70"
-          placeholder="Your review here..."
-          onChange={e => this.setState({inputReview: e.target.value})}
-        />
-        <button onClick={e => {
-          e.preventDefault();
-          this.postReview(this.state.inputName, this.state.inputReview, this.state.rating);
-        }}
-        >Submit Review!</button>
-      </form>
+      <div>
+        <h4>Leave a Review</h4>
+        <Form>
+          <div>
+            <Rating 
+              name="rating"
+              starCount={5}
+              value={this.state.rating}
+              onStarClick={this.onStarClick.bind(this)}
+            />
+          </div>
+          <div>
+            <InputName
+              type="text"
+              name="name"
+              placeholder="Name"
+              onChange={e => this.setState({inputName: e.target.value})}
+            />
+          </div>
+          <div>
+            <TextAreaReview 
+              placeholder="Your review here..."
+              onChange={e => this.setState({inputReview: e.target.value})}
+            />
+          </div>
+          <Button 
+            onClick={e => {
+              e.preventDefault();
+              this.postReview(this.state.inputName, this.state.inputReview, this.state.rating);
+            }}
+          >Submit Review!</Button>
+        </Form>
+      </div>
     )
   }
 }

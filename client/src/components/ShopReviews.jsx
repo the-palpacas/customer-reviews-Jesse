@@ -5,6 +5,21 @@ import StarRating from "react-star-rating-component";
 import ReviewEntry from "./ReviewEntry.jsx";
 import SubmitReview from "./SubmitReview.jsx";
 
+const Wrapper = styled.section`
+  font-family: 'Helvetica', 'Arial', sans-serif;
+`;
+
+const Rating = styled(StarRating)`
+  vertical-align: middle;
+  margin: 0px 12px;
+`;
+
+const Count = styled.span`
+  color: #444;
+  font-size: 14px;
+  font-weight: 200;
+`;
+
 class ShopReviews extends React.Component {
   constructor(props) {
     super(props);
@@ -38,21 +53,17 @@ class ShopReviews extends React.Component {
   }
 
   render() {
-    const Wrapper = styled.section`
-      font-family: 'Helvetica', 'Arial', sans-serif;
-    `;
-
     return (
       <Wrapper>
-        <h3>
-          Reviews 
-          <StarRating 
+        <h4>
+          Reviews
+          <Rating 
             name="avgRating" 
             value={this.state.avgRating} 
-            editing={false} 
+            editing={false}
           /> 
-          ({this.state.reviews.length})
-        </h3>
+          <Count>({this.state.reviews.length})</Count>
+        </h4>
         {this.state.reviews.map((review, i) => {
           if (i < 5) {
             return (

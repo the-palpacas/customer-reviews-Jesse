@@ -4,11 +4,14 @@ import ReviewUser from "./ReviewUser.jsx";
 import ReviewBody from "./ReviewBody.jsx";
 import Helpfulness from "./Helpfulness.jsx";
 
-const ReviewEntry = (props) => {
-  const Wrapper = styled.div`
-    border-bottom: 1px solid grey;
-  `;
+const Wrapper = styled.div`
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+`;
 
+const ReviewEntry = (props) => {
   return (
     <Wrapper>
       <Helpfulness
