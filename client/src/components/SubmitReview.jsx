@@ -19,6 +19,8 @@ class SubmitReview extends React.Component {
     let day = d.getDate();
     let year = d.getFullYear();
 
+    month < 10 ? month = "0" + month : null;
+
     return `${month}/${day}/${year}`;
   }
 
@@ -36,11 +38,10 @@ class SubmitReview extends React.Component {
       review: review,
       shopId: this.props.shopId
     })
-    .then(() => {
-      console.log("success")
-      this.props.getReviews();
-    })
-    .catch(err => console.log(err));
+      .then(() => {
+        this.props.getReviews();
+      })
+      .catch(err => console.log(err));
   }
   
   render() {
