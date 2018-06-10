@@ -1,11 +1,16 @@
 import React from "react";
+import styled from "styled-components";
 import ReviewUser from "./ReviewUser.jsx";
 import ReviewBody from "./ReviewBody.jsx";
 import Helpfulness from "./Helpfulness.jsx";
 
 const ReviewEntry = (props) => {
+  const Wrapper = styled.div`
+    border-bottom: 1px solid grey;
+  `;
+
   return (
-    <div>
+    <Wrapper>
       <Helpfulness
         reviewId={props.data.id}
         votes={props.data.votes}
@@ -23,7 +28,7 @@ const ReviewEntry = (props) => {
         productName={props.data.product}
         productId={props.data.product_img.slice(68, props.data.product_img.indexOf(".jpg"))}
       />
-    </div>
+    </Wrapper>
   )
 }
 
