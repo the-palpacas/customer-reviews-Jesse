@@ -45,7 +45,8 @@ class ShopReviews extends React.Component {
       avgRating: null,
       shopId: null,
       page: 1,
-      lastPage: null
+      lastPage: null,
+      sortBy: "default"
     }
   }
 
@@ -94,8 +95,40 @@ class ShopReviews extends React.Component {
     });
   }
 
+  handleSelectSort(sort) {
+    this.setState({page: 1, sortBy: sort});
+  }
+
   render() {
     let reviews = this.state.reviews;
+    let sort = this.state.sortBy;
+    if (sort === "helpfulness") {
+      let temp = reviews.slice();
+      temp.sort((a, b) => {
+        return b.helpfulness - a.helpfulness; 
+      });
+      reviews = temp;
+    }
+    if (sort === "descendingRating") {
+      let temp = reviews.slice();
+      temp.sort((a, b) => {
+        if (a.rating !== b.rating) {
+          return b.rating - a.rating;
+        }
+        return b.helpfulness - a.helpfulness;
+      });
+      reviews = temp;
+    }
+    if (sort === "ascendingRating") {
+      let temp = reviews.slice();
+      temp.sort((a, b) => {
+        if (a.rating !== b.rating) {
+          return a.rating - b.rating;
+        }
+        return b.helpfulness - a.helpfulness;
+      });
+      reviews = temp;
+    }
     let page = this.state.page;
     let reviewIdxs = [0 + ((page - 1) * 5), 5 + ((page - 1) * 5)];
     let toRender = reviews.slice(reviewIdxs[0], reviewIdxs[1]);
@@ -125,8 +158,11 @@ class ShopReviews extends React.Component {
             onClick={() => this.handleForwardArrow()}
           />
           <Sort>Sort by: </Sort>
-          <select defaultValue="Relevance">
-            <option>Relevance</option>
+          <select onChange={e => this.handleSelectSort(e.target.value)}>
+            <option value="default">None</option>
+            <option value="helpfulness">Helpfulness</option>
+            <option value="descendingRating">Rating: High to Low</option>
+            <option value="ascendingRating">Rating: Low to High</option>
           </select>
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
