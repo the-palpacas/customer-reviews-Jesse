@@ -76,7 +76,15 @@ class ShopReviews extends React.Component {
     this.state.page === 1 
     ? null 
     : this.setState(prevState => {
-      return {"page": prevState.page - 1};
+      return {page: prevState.page - 1};
+    });
+  }
+
+  handleForwardArrow() {
+    this.state.page === this.state.lastPage 
+    ? null 
+    : this.setState(prevState => {
+      return {page: prevState.page + 1};
     });
   }
 
@@ -106,6 +114,7 @@ class ShopReviews extends React.Component {
             {page}
           <Icon 
             className="fas fa fa-caret-right" 
+            onClick={() => this.handleForwardArrow()}
           />
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
