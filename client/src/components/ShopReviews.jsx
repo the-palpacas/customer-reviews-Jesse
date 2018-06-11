@@ -118,6 +118,18 @@ class ShopReviews extends React.Component {
           />
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
+        <div>
+          <Page>Page</Page>
+          <Icon 
+            className="fas fa-caret-left"
+            onClick={() => this.handleBackArrow()}
+          />
+            {page}
+          <Icon 
+            className="fas fa fa-caret-right" 
+            onClick={() => this.handleForwardArrow()}
+          />
+        </div>
         <SubmitReview 
           getReviews={this.getReviews.bind(this)} 
           shopId={this.state.shopId}
