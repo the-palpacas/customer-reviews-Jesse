@@ -20,6 +20,16 @@ const Count = styled.span`
   font-weight: 200;
 `;
 
+const Page = styled.span`
+  font-size: 14px;
+  color: #444;
+  margin-right: 10px;
+`;
+
+const Icon = styled.i`
+  margin: 0px 5px;
+`;
+
 class ShopReviews extends React.Component {
   constructor(props) {
     super(props);
@@ -71,10 +81,10 @@ class ShopReviews extends React.Component {
           <Count>({this.state.reviews.length})</Count>
         </h4>
         <div>
-          Page
-          <i className="fas fa-caret-left" />
+          <Page>Page</Page>
+          <Icon className="fas fa-caret-left" />
             {page}
-          <i className="fas fa fa-caret-right" />
+          <Icon className="fas fa fa-caret-right" />
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <SubmitReview 
