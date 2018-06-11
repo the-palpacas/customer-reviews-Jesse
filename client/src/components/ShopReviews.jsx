@@ -30,6 +30,12 @@ const Icon = styled.i`
   margin: 0px 5px;
 `;
 
+const Sort = styled.span`
+  font-size: 14px;
+  color: #444;
+  margin: 0px 10px 0px 20px;
+`;
+
 class ShopReviews extends React.Component {
   constructor(props) {
     super(props);
@@ -118,6 +124,10 @@ class ShopReviews extends React.Component {
             style={page === this.state.lastPage ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleForwardArrow()}
           />
+          <Sort>Sort by: </Sort>
+          <select defaultValue="Relevance">
+            <option>Relevance</option>
+          </select>
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <div>
