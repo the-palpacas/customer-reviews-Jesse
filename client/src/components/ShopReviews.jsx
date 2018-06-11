@@ -60,7 +60,7 @@ class ShopReviews extends React.Component {
 
         count % 5 === 0 
         ? lastPage = count / 5 
-        : lastPage = Math.ceil(count / 5)
+        : lastPage = Math.ceil(count / 5);
 
         this.setState({
           reviews: reviews, 
@@ -109,11 +109,13 @@ class ShopReviews extends React.Component {
           <Page>Page</Page>
           <Icon 
             className="fas fa-caret-left"
+            style={page === 1 ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleBackArrow()}
           />
             {page}
           <Icon 
             className="fas fa fa-caret-right" 
+            style={page === this.state.lastPage ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleForwardArrow()}
           />
         </div>
@@ -122,11 +124,13 @@ class ShopReviews extends React.Component {
           <Page>Page</Page>
           <Icon 
             className="fas fa-caret-left"
+            style={page === 1 ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleBackArrow()}
           />
             {page}
           <Icon 
             className="fas fa fa-caret-right" 
+            style={page === this.state.lastPage ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleForwardArrow()}
           />
         </div>
