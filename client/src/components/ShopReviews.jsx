@@ -27,7 +27,8 @@ class ShopReviews extends React.Component {
     this.state = {
       reviews: [],
       avgRating: null,
-      shopId: null
+      shopId: null,
+      page: 1,
     }
   }
 
@@ -53,6 +54,11 @@ class ShopReviews extends React.Component {
   }
 
   render() {
+    let reviews = this.state.reviews;
+    let page = this.state.page;
+    let reviewIdxs = [(1 * page) - 1, (5 * page)];
+    let toRender = reviews.slice(reviewIdxs[0], reviewIdxs[1]);
+
     return (
       <Wrapper>
         <h4>
@@ -64,13 +70,7 @@ class ShopReviews extends React.Component {
           /> 
           <Count>({this.state.reviews.length})</Count>
         </h4>
-        {this.state.reviews.map((review, i) => {
-          if (i < 5) {
-            return (
-              <ReviewEntry data={review} key={review.id}/>
-            )
-          }
-        })}
+        {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <SubmitReview 
           getReviews={this.getReviews.bind(this)} 
           shopId={this.state.shopId}
