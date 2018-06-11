@@ -36,6 +36,11 @@ const Sort = styled.span`
   margin: 0px 10px 0px 20px;
 `;
 
+const Select = styled.select`
+  background-color: white;
+  font-size: 14px;
+`;
+
 class ShopReviews extends React.Component {
   constructor(props) {
     super(props);
@@ -157,13 +162,13 @@ class ShopReviews extends React.Component {
             style={page === this.state.lastPage ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleForwardArrow()}
           />
-          <Sort>Sort by: </Sort>
-          <select onChange={e => this.handleSelectSort(e.target.value)}>
+          <Sort>Sort by</Sort>
+          <Select onChange={e => this.handleSelectSort(e.target.value)}>
             <option value="default">None</option>
             <option value="helpfulness">Helpfulness</option>
             <option value="descendingRating">Rating: High to Low</option>
             <option value="ascendingRating">Rating: Low to High</option>
-          </select>
+          </Select>
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <div>
