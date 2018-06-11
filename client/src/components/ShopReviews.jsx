@@ -39,6 +39,7 @@ class ShopReviews extends React.Component {
       avgRating: null,
       shopId: null,
       page: 1,
+      lastPage: null
     }
   }
 
@@ -49,15 +50,23 @@ class ShopReviews extends React.Component {
   getReviews() {
     axios.get(`${window.location.pathname}reviews`)
       .then(response => {
-        let avgRating = response.data.reduce((acc, val) => {
+        let reviews = response.data;
+        let count = reviews.length;
+        let avgRating = reviews.reduce((acc, val) => {
           return acc + val.rating;
-        }, 0) / response.data.length;
-        let shopId = response.data[0].shop_id;
+        }, 0) / count;
+        let shopId = reviews[0].shop_id;
+        let lastPage;
+
+        count % 5 === 0 
+        ? lastPage = count / 5 
+        : lastPage = Math.ceil(count / 5)
 
         this.setState({
-          reviews: response.data, 
+          reviews: reviews, 
           avgRating: Math.round(avgRating), 
-          shopId: shopId
+          shopId: shopId,
+          lastPage: lastPage
         });
       })
       .catch(err => console.log(err));
