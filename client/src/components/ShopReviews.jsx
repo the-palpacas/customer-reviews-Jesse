@@ -70,6 +70,12 @@ class ShopReviews extends React.Component {
           /> 
           <Count>({this.state.reviews.length})</Count>
         </h4>
+        <div>
+          Page
+          <i className="fas fa-caret-left" />
+            {page}
+          <i className="fas fa fa-caret-right" />
+        </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <SubmitReview 
           getReviews={this.getReviews.bind(this)} 
