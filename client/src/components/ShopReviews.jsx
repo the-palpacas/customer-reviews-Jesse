@@ -63,6 +63,14 @@ class ShopReviews extends React.Component {
       .catch(err => console.log(err));
   }
 
+  handleBackArrow() {
+    this.state.page === 1 
+    ? null 
+    : this.setState(prevState => {
+      return {"page": prevState.page - 1};
+    });
+  }
+
   render() {
     let reviews = this.state.reviews;
     let page = this.state.page;
@@ -82,9 +90,14 @@ class ShopReviews extends React.Component {
         </h4>
         <div>
           <Page>Page</Page>
-          <Icon className="fas fa-caret-left" />
+          <Icon 
+            className="fas fa-caret-left"
+            onClick={() => this.handleBackArrow()}
+          />
             {page}
-          <Icon className="fas fa fa-caret-right" />
+          <Icon 
+            className="fas fa fa-caret-right" 
+          />
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <SubmitReview 
