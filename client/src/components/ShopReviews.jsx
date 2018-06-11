@@ -91,7 +91,7 @@ class ShopReviews extends React.Component {
   render() {
     let reviews = this.state.reviews;
     let page = this.state.page;
-    let reviewIdxs = [(1 * page) - 1, (5 * page)];
+    let reviewIdxs = [0 + ((page - 1) * 5), 5 + ((page - 1) * 5)];
     let toRender = reviews.slice(reviewIdxs[0], reviewIdxs[1]);
 
     return (
