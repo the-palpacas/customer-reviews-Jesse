@@ -30,6 +30,17 @@ const Icon = styled.i`
   margin: 0px 5px;
 `;
 
+const Sort = styled.span`
+  font-size: 14px;
+  color: #444;
+  margin: 0px 10px 0px 20px;
+`;
+
+const Select = styled.select`
+  background-color: white;
+  font-size: 14px;
+`;
+
 class ShopReviews extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +50,8 @@ class ShopReviews extends React.Component {
       avgRating: null,
       shopId: null,
       page: 1,
-      lastPage: null
+      lastPage: null,
+      sortBy: "default"
     }
   }
 
@@ -88,8 +100,40 @@ class ShopReviews extends React.Component {
     });
   }
 
+  handleSelectSort(sort) {
+    this.setState({page: 1, sortBy: sort});
+  }
+
   render() {
     let reviews = this.state.reviews;
+    let sort = this.state.sortBy;
+    if (sort === "helpfulness") {
+      let temp = reviews.slice();
+      temp.sort((a, b) => {
+        return b.helpfulness - a.helpfulness; 
+      });
+      reviews = temp;
+    }
+    if (sort === "descendingRating") {
+      let temp = reviews.slice();
+      temp.sort((a, b) => {
+        if (a.rating !== b.rating) {
+          return b.rating - a.rating;
+        }
+        return b.helpfulness - a.helpfulness;
+      });
+      reviews = temp;
+    }
+    if (sort === "ascendingRating") {
+      let temp = reviews.slice();
+      temp.sort((a, b) => {
+        if (a.rating !== b.rating) {
+          return a.rating - b.rating;
+        }
+        return b.helpfulness - a.helpfulness;
+      });
+      reviews = temp;
+    }
     let page = this.state.page;
     let reviewIdxs = [0 + ((page - 1) * 5), 5 + ((page - 1) * 5)];
     let toRender = reviews.slice(reviewIdxs[0], reviewIdxs[1]);
@@ -118,6 +162,13 @@ class ShopReviews extends React.Component {
             style={page === this.state.lastPage ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleForwardArrow()}
           />
+          <Sort>Sort by</Sort>
+          <Select onChange={e => this.handleSelectSort(e.target.value)}>
+            <option value="default">None</option>
+            <option value="helpfulness">Helpfulness</option>
+            <option value="descendingRating">Rating: High to Low</option>
+            <option value="ascendingRating">Rating: Low to High</option>
+          </Select>
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <div>
