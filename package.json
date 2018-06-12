@@ -9,7 +9,9 @@
   },
   "scripts": {
     "react-dev": "webpack -d -w",
-    "server-dev": "nodemon server/server.js"
+    "server-dev": "nodemon server/server.js",
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.18.0",
