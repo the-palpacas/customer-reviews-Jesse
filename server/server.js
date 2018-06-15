@@ -2,6 +2,7 @@ const express = require("express");
 const mysql = require("mysql");
 const db = require("./config.js");
 
+const port = process.env.port || 3001;
 const app = express();
 
 db.connect();
@@ -61,4 +62,4 @@ app.options("/:id/reviews", (req, res) => {
   }).end();
 });
 
-app.listen(3001, () => console.log("Express server listening on port 3001"));
+app.listen(port, () => console.log(`Express server listening on port ${port}`));
