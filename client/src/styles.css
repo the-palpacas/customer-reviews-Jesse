@@ -76,8 +76,9 @@
 #shop-reviews .submit-btn {
   width: 100px;
   background: #F56400;
-  color: white;
   border-radius: 3px;
+  color: white;
+  font-size: 11px;
   margin-top: 10px;
 }
 
@@ -100,7 +101,6 @@
 
 #shop-reviews .submit-rating {
   vertical-align: middle;
-  margin: 5px 0px;
   font-size: 16px;
 }
 
@@ -150,4 +150,13 @@
 
 #shop-reviews .review-content {
   width: 415px;
+}
+
+#shop-reviews h4 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#shop-reviews .review-title {
+  margin-top: 5px;
 }
