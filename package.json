@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-dev": "webpack -d -w",
-    "server-dev": "nodemon server/server.js"
+    "build": "webpack -d -w",
+    "start": "nodemon server/server.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -47,7 +47,7 @@ class SubmitReview extends React.Component {
   render() {
     return (
       <div>
-        <h4>Leave a Review</h4>
+        <h4 className="review-title">Leave a Review</h4>
         <form className="form">
           <div>
             <StarRating
