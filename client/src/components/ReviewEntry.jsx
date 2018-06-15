@@ -4,16 +4,9 @@ import ReviewUser from "./ReviewUser.jsx";
 import ReviewBody from "./ReviewBody.jsx";
 import Helpfulness from "./Helpfulness.jsx";
 
-const Wrapper = styled.div`
-  font-size: 14px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: row;
-`;
-
 const ReviewEntry = (props) => {
   return (
-    <Wrapper>
+    <div className="review-wrapper">
       <Helpfulness
         reviewId={props.data.id}
         votes={props.data.votes}
@@ -31,7 +24,7 @@ const ReviewEntry = (props) => {
         productName={props.data.product}
         productId={props.data.product_img.slice(68, props.data.product_img.indexOf(".jpg"))}
       />
-    </Wrapper>
+    </div>
   )
 }
 

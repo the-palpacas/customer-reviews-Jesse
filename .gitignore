@@ -1,4 +1,4 @@
 /node_modules
-/public/dist
+/public/
 /server/config.js
-/public/index.html
+/coverage
