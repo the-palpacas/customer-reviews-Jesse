@@ -1,6 +1,5 @@
 import React from "react";
 import StarRating from "react-star-rating-component";
-import styled from "styled-components";
 
 const ReviewBody = (props) => {
   let months = {

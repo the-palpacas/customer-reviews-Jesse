@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import ReviewUser from "./ReviewUser.jsx";
 import ReviewBody from "./ReviewBody.jsx";
 import Helpfulness from "./Helpfulness.jsx";

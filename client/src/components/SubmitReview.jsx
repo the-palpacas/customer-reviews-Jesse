@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
 import StarRating from "react-star-rating-component";
 
 class SubmitReview extends React.Component {

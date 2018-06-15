@@ -3,7 +3,6 @@ import axios from "axios";
 import StarRating from "react-star-rating-component";
 import ReviewEntry from "./ReviewEntry.jsx";
 import SubmitReview from "./SubmitReview.jsx";
-import "../styles.css";
 
 class ShopReviews extends React.Component {
   constructor(props) {
