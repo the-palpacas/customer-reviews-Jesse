@@ -59,7 +59,7 @@ class Helpfulness extends React.Component {
             onClick={handleUpvoteClick}
           />
         </div>
-        <div className="centered">{this.state.helpfulness}</div>
+        <div className="centered" style={{color: numStyle}}>{this.state.helpfulness}</div>
         <div className="centered">
           <i 
             className="fas fa-arrow-down"
