@@ -19,7 +19,7 @@
 - Create 'config.js' file in server folder.
 - Run 'npm install' to get project dependencies/subdependencies.
 - Seed MySql database by running data.sql in batch mode.
-- Run 'npm run build' to create static files.
+- Run 'npm run production' to create static files.
 - Run 'npm run start' to start server.
 
 ## Requirements
@@ -28,7 +28,9 @@
 
 ## Development
 
-npm run build: Creates webpack js bundle, html file, and stylesheet.
+npm run build: Creates webpack js bundle, html file, and stylesheet. Watches files.
+npm run server-dev: Starts node server and watches files.
+npm run production: Creates minified webpack bundles.
 npm run start: Starts node server.
 
 ### Installing Dependencies
