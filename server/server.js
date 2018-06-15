@@ -62,4 +62,4 @@ app.options("/:id/reviews", (req, res) => {
   }).end();
 });
 
-app.listen(port, () => console.log("Express server listening on port 3001"));
+app.listen(port, () => console.log(`Express server listening on port ${port}`));
