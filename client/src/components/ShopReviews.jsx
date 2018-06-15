@@ -1,45 +1,8 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
 import StarRating from "react-star-rating-component";
 import ReviewEntry from "./ReviewEntry.jsx";
 import SubmitReview from "./SubmitReview.jsx";
-
-const Wrapper = styled.section`
-  font-family: 'Helvetica', 'Arial', sans-serif;
-`;
-
-const Rating = styled(StarRating)`
-  vertical-align: middle;
-  margin: 0px 12px;
-`;
-
-const Count = styled.span`
-  color: #444;
-  font-size: 14px;
-  font-weight: 200;
-`;
-
-const Page = styled.span`
-  font-size: 14px;
-  color: #444;
-  margin-right: 10px;
-`;
-
-const Icon = styled.i`
-  margin: 0px 5px;
-`;
-
-const Sort = styled.span`
-  font-size: 14px;
-  color: #444;
-  margin: 0px 10px 0px 20px;
-`;
-
-const Select = styled.select`
-  background-color: white;
-  font-size: 14px;
-`;
 
 class ShopReviews extends React.Component {
   constructor(props) {
@@ -139,48 +102,52 @@ class ShopReviews extends React.Component {
     let toRender = reviews.slice(reviewIdxs[0], reviewIdxs[1]);
 
     return (
-      <Wrapper>
+      <section className="wrapper">
         <h4>
           Reviews
-          <Rating 
+          <StarRating 
             name="avgRating" 
             value={this.state.avgRating} 
             editing={false}
+            className="rating"
           /> 
-          <Count>({this.state.reviews.length})</Count>
+          <span className="count">({this.state.reviews.length})</span>
         </h4>
         <div>
-          <Page>Page</Page>
-          <Icon 
-            className="fas fa-caret-left"
+          <span className="page">Page</span>
+          <i 
+            className="fas fa-caret-left icon"
             style={page === 1 ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleBackArrow()}
           />
             {page}
-          <Icon 
-            className="fas fa fa-caret-right" 
+          <i 
+            className="fas fa fa-caret-right icon" 
             style={page === this.state.lastPage ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleForwardArrow()}
           />
-          <Sort>Sort by</Sort>
-          <Select onChange={e => this.handleSelectSort(e.target.value)}>
+          <span className="sort">Sort by</span>
+          <select 
+            onChange={e => this.handleSelectSort(e.target.value)}
+            className="select"
+          >
             <option value="default">None</option>
             <option value="helpfulness">Helpfulness</option>
             <option value="descendingRating">Rating: High to Low</option>
             <option value="ascendingRating">Rating: Low to High</option>
-          </Select>
+          </select>
         </div>
         {toRender.map(review => <ReviewEntry data={review} key={review.id}/>)}
         <div>
-          <Page>Page</Page>
-          <Icon 
-            className="fas fa-caret-left"
+          <span className="page">Page</span>
+          <i 
+            className="fas fa-caret-left icon"
             style={page === 1 ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleBackArrow()}
           />
             {page}
-          <Icon 
-            className="fas fa fa-caret-right" 
+          <i 
+            className="fas fa fa-caret-right icon" 
             style={page === this.state.lastPage ? {color: "#D3D3D3"} : {color: "black"}}
             onClick={() => this.handleForwardArrow()}
           />
@@ -189,7 +156,7 @@ class ShopReviews extends React.Component {
           getReviews={this.getReviews.bind(this)} 
           shopId={this.state.shopId}
         />
-      </Wrapper>
+      </section>
     )
   }
 }

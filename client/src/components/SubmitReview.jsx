@@ -1,44 +1,6 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
 import StarRating from "react-star-rating-component";
-
-const Form = styled.form`
-  margin: 5px 0px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Rating = styled(StarRating)`
-  vertical-align: middle;
-  margin: 5px 0px;
-  font-size: 16px;
-`;
-
-const InputName = styled.input`
-  margin: 5px 0px;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-size: 14px;
-`;
-
-const TextAreaReview = styled.textarea`
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-size: 14px;
-  height: 100px;
-  width: 400px;
-`;
-
-const Button = styled.button`
-  width: 100px;
-  background: #F56400;
-  color: white;
-  border-radius: 3px;
-  margin-top: 10px;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
 
 class SubmitReview extends React.Component {
   constructor(props) {
@@ -86,9 +48,10 @@ class SubmitReview extends React.Component {
     return (
       <div>
         <h4>Leave a Review</h4>
-        <Form>
+        <form className="form">
           <div>
-            <Rating 
+            <StarRating
+              className="submit-rating" 
               name="rating"
               starCount={5}
               value={this.state.rating}
@@ -96,7 +59,8 @@ class SubmitReview extends React.Component {
             />
           </div>
           <div>
-            <InputName
+            <input
+              className="name"
               type="text"
               name="name"
               placeholder="Name"
@@ -104,18 +68,20 @@ class SubmitReview extends React.Component {
             />
           </div>
           <div>
-            <TextAreaReview 
+            <textarea
+              className="review-txt" 
               placeholder="Your review here..."
               onChange={e => this.setState({inputReview: e.target.value})}
             />
           </div>
-          <Button 
+          <button 
             onClick={e => {
               e.preventDefault();
               this.postReview(this.state.inputName, this.state.inputReview, this.state.rating);
             }}
-          >Submit Review!</Button>
-        </Form>
+            className="submit-btn"
+          >Submit Review!</button>
+        </form>
       </div>
     )
   }

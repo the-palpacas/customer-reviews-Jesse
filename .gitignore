@@ -1,2 +1,4 @@
 /node_modules
-/public/dist
+/public/
+/server/config.js
+/coverage

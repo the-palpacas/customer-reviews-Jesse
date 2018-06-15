@@ -1,18 +1,5 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  height: 50px;
-  width: 30px;
-  margin: auto 0px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Centered = styled.div`
-  margin: auto;
-`;
 
 class Helpfulness extends React.Component {
   constructor(props) {
@@ -59,13 +46,9 @@ class Helpfulness extends React.Component {
       numStyle = "black";
     }
 
-    const StyledNum = Centered.extend`
-      color: ${numStyle};
-    `;
-
     return (
-      <Wrapper>
-        <Centered>
+      <div className="helpfulness-wrapper">
+        <div className="centered">
           <i 
             className="fas fa-arrow-up" 
             style={
@@ -75,9 +58,9 @@ class Helpfulness extends React.Component {
             }
             onClick={handleUpvoteClick}
           />
-        </Centered>
-        <StyledNum>{this.state.helpfulness}</StyledNum>
-        <Centered>
+        </div>
+        <div className="centered">{this.state.helpfulness}</div>
+        <div className="centered">
           <i 
             className="fas fa-arrow-down"
             style={
@@ -87,8 +70,8 @@ class Helpfulness extends React.Component {
             }
             onClick={handleDownvoteClick}
           />
-        </Centered>
-      </Wrapper>
+        </div>
+      </div>
     )
   }
 }
