@@ -7,7 +7,6 @@
   - https://github.com/the-palpacas/customer-reviews-Jesse
   - https://github.com/the-palpacas/Shop-products-Xue
   - https://github.com/the-palpacas/buying-module-libby
-  - https://github.com/the-palpacas/image-viewer-matt
 
 ## Table of Contents
 
@@ -17,22 +16,25 @@
 
 ## Usage
 
-> Some usage instructions
+- Create 'config.js' file in server folder.
+- Run 'npm install' to get project dependencies/subdependencies.
+- Seed MySql database by running data.sql in batch mode.
+- Run 'npm run build' to create static files.
+- Run 'npm run start' to start server.
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
 - Node 6.13.0
-- etc
 
 ## Development
+
+npm run build: Creates webpack js bundle, html file, and stylesheet.
+npm run start: Starts node server.
 
 ### Installing Dependencies
 
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
