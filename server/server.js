@@ -9,13 +9,13 @@ db.connect();
 
 app.use(express.json());
 
-app.use("/:id", express.static(__dirname + "/../public"));
-
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+app.use("/:id", express.static(__dirname + "/../public"));
 
 app.get("/:id/reviews", (req, res) => {
   let productId = req.params.id;
